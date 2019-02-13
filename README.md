@@ -1,0 +1,2 @@
+# Easy-Ajax-Cart
+Easy Ajax Cart allows users to easily add,remove and update products from your store without having to reload continuously. With each addition or deletion, only the shopping cart is refreshed. This immediate action allows users to continue shopping without waiting for pages to refresh. This feature also works on the shopping cart page, enabling removal of product and updation of cart quantity without page reloads.

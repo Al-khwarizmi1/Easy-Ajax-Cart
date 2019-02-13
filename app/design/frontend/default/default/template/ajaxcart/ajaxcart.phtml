@@ -1,0 +1,49 @@
+<?php 
+/**
+ * @name         :  Easy Ajax Cart
+ * @version      :  1.0
+ * @since        :  Magento 1.4
+ * @author       :  Apptha - http://www.apptha.com
+ * @copyright    :  Copyright (C) 2011 Powered by Apptha
+ * @license      :  http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ * @Creation Date:  October 22 2011
+ * 
+ * */
+?>
+<!-- popup-box starts -->
+<div id ="popup-block"  class="pop" style="display:none; ">
+<div style="width:100%; float:left" align="center">
+<div style="margin-top: -55px; float: right; margin-right:-55px;"><a href="javascript:ajaxClose('popup-block')"><img src="<?php echo $this->getSkinUrl('ajaxcart/images/close.png');?>" alt="close"/></a></div>
+<div id="product-img" style="float:left; width:30%; padding-bottom:15px;"></div>
+<div id="product-name" style="width: 178px; padding-bottom:15px;font-weight:bold;padding-left: 80px;text-align: left;"></div>
+</div>
+<!-- <a href="javascript:ajaxClose('popup-block')" ><?php //echo $this->__('Continue Shopping')?></a>  -->
+<button type="button" title="<?php echo $this->__('Continue Shopping') ?>" class="button btn-cart" style="margin-left: 12px;" onclick="javascript:ajaxClose('popup-block')"><span><span style="text-shadow: #393939 1px 1px 1px;"><?php echo $this->__('Continue Shopping') ?></span></span></button>
+<!-- <a href="<?php //echo  $this->getUrl('checkout/cart');?>" style="float:right;" class="button btn-cart"><?php //echo $this->__('Add to cart')?></a>  -->
+<button type="button" title="<?php echo $this->__('Checkout') ?>" class="button btn-cart" onclick="setLocation('<?php echo  $this->getUrl('checkout/cart') ?>')" style="padding-left:20px;"><span><span style="text-shadow: #393939 1px 1px 1px;"><?php echo $this->__('Checkout') ?></span></span></button>
+<div>
+</div>
+</div>
+<!-- popup-box ends -->
+
+<!-- Custom option popupbox starts -->
+<div id="custom-option" style="display: none;"></div>
+<!-- Custom option popupbox starts -->
+
+<!-- Loading box starts -->
+<div id="loading-box" align="center" style="display:none;background: #E2E9EB;border: 3px solid #3B4853;">
+ <img src="<?php echo $this->getSkinUrl('ajaxcart/images/ajax-loader.gif');?>" alt="loading please wait" />
+</div>
+<!-- Loading box starts -->
+
+<script type="text/javascript">
+var base_url = '<?php echo Mage::getBaseUrl() ?>';
+//<![CDATA[
+var ajaxcart;
+  var ajaxcart = new Ajaxcart('<?php echo intval(strpos(Mage::app()->getFrontController()->getRequest()->getPathInfo(),'/checkout/') !== false )?>','<?php echo Mage::getStoreConfig('ajaxcart/general/Enable_cart_update');?>','<?php echo Mage::getStoreConfig('ajaxcart/general/Cart_update');?>');
+//]]>
+    function ajaxClose(id)
+    {
+    	Effect.DropOut(id);  	
+    }        
+ </script>

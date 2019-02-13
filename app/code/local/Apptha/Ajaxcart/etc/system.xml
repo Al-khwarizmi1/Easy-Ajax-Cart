@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+     <tabs>
+        <ajaxcart translate="label" module="ajaxcart">
+            <label>Apptha</label>
+            <sort_order>200</sort_order>
+        </ajaxcart>
+    </tabs>
+    <sections>
+        <ajaxcart translate="label">
+              <label>Easy Ajax Cart</label>
+              <tab>ajaxcart</tab>
+              <frontend_type>text</frontend_type>
+              <sort_order>1000</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+        <groups>
+            <general translate="label" >
+                <label>General</label>
+                <frontend_type>text</frontend_type>
+              <sort_order>100</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            <fields>
+              <Enable_cart_update translate="label">
+                         <label>Enable Cart Update </label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <active>true</active>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </Enable_cart_update>
+                    <Cart_update translate="label">
+                            <label>Easy Ajax Cart in </label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>ajaxcart/ajaxcart</source_model>
+                            <active>true</active>
+                            <sort_order>1</sort_order>
+                            <show_in_default>3</show_in_default>
+                            <show_in_website>1</show_in_website>                           
+                            <show_in_store>1</show_in_store>
+                        </Cart_update>
+                         
+                        
+                      </fields>
+                  </general>
+               
+                 </groups>
+        </ajaxcart>
+    </sections>
+</config>

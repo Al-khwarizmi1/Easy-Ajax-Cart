@@ -1,0 +1,151 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Apptha_Ajaxcart>
+            <version>0.1.0</version>
+        </Apptha_Ajaxcart>
+    </modules>
+    <frontend>
+        <routers>
+            <ajaxcart>
+                <use>standard</use>
+                <args>
+                    <module>Apptha_Ajaxcart</module>
+                    <frontName>ajaxcart</frontName>
+                </args>
+            </ajaxcart>
+       
+        </routers>
+        <layout>
+            <updates>
+                <Apptha_Ajaxcart module="Apptha_Ajaxcart">
+                    <file>ajaxcart.xml</file>
+                </Apptha_Ajaxcart>
+            </updates>
+        </layout>
+      
+    </frontend>
+    <admin>
+        <routers>
+			<ajaxcart>
+				<use>admin</use>
+				<args>
+					<module>Apptha_Ajaxcart</module>
+					<frontName>ajaxcart</frontName>
+				</args>
+			</ajaxcart>
+        </routers>
+    </admin>
+    <adminhtml>
+		<!-- <menu>
+			<ajaxcart module="ajaxcart">
+				<title>Ajaxcart</title>
+				<sort_order>71</sort_order>               
+				<children>
+					<items module="ajaxcart">
+						<title>Manage Items</title>
+						<sort_order>0</sort_order>
+						<action>ajaxcart/adminhtml_ajaxcart</action>
+					</items>
+				</children>
+			</ajaxcart>
+		</menu> -->
+		<acl>
+			<resources>
+				<all>
+					<title>Allow Everything</title>
+				</all>
+				<admin>
+					<children>
+						<Apptha_Ajaxcart>
+							<title>Ajaxcart Module</title>
+							<sort_order>10</sort_order>
+						</Apptha_Ajaxcart>
+					</children>
+				</admin>
+			</resources>
+		</acl>
+		<layout>   
+			<updates>
+				<Apptha_Ajaxcart module="Apptha_Ajaxcart">
+					<file>ajaxcart.xml</file>
+				</Apptha_Ajaxcart>
+			</updates>
+		</layout>
+    </adminhtml>   
+    <global>
+        <models>
+            <ajaxcart>
+                <class>Apptha_Ajaxcart_Model</class>
+                <resourceModel>ajaxcart_mysql4</resourceModel>
+            </ajaxcart>
+            <ajaxcart_mysql4>
+                <class>Apptha_Ajaxcart_Model_Mysql4</class>
+                <entities>
+                    <ajaxcart>
+                        <table>ajaxcart</table>
+                    </ajaxcart>
+                </entities>
+            </ajaxcart_mysql4>
+        </models>
+        <events>
+            <checkout_cart_add_product_complete>
+                <observers>
+                    <ajaxcart_observer>
+                        <type>singleton</type>
+                        <class>ajaxcart/observer</class>
+                        <method>addtoCart</method>
+                    </ajaxcart_observer>
+                </observers>
+            </checkout_cart_add_product_complete>
+            <controller_action_postdispatch_catalog_product_view>
+                <observers>
+                    <ajaxcart_observer>
+                        <type>singleton</type>
+                        <class>ajaxcart/observer</class>
+                        <method>ajaxCustomOptions</method>
+                    </ajaxcart_observer>
+                </observers>
+            </controller_action_postdispatch_catalog_product_view>
+        </events>
+        <resources>
+            <ajaxcart_setup>
+                <setup>
+                    <module>Apptha_Ajaxcart</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </ajaxcart_setup>
+            <ajaxcart_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </ajaxcart_write>
+            <ajaxcart_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </ajaxcart_read>
+        </resources>
+        <blocks>
+            <ajaxcart>
+                <class>Apptha_Ajaxcart_Block</class>
+            </ajaxcart>
+        </blocks>
+         <rewrite>
+            <Apptha_Ajaxcart_CheckoutCartUpdatePost>
+
+                <from><![CDATA[ #^/checkout/cart/updatePost/#  ]]></from>
+
+                <to>/ajaxcart/cart/updatePost/</to>
+
+            </Apptha_Ajaxcart_CheckoutCartUpdatePost>
+</rewrite>
+        <helpers>
+            <ajaxcart>
+                <class>Apptha_Ajaxcart_Helper</class>
+            </ajaxcart>
+        </helpers>
+    </global>
+</config>

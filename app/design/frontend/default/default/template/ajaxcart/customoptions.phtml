@@ -1,0 +1,42 @@
+<?php 
+/**
+ * @name         :  Easy Ajax Cart
+ * @version      :  1.0
+ * @since        :  Magento 1.4
+ * @author       :  Apptha - http://www.apptha.com
+ * @copyright    :  Copyright (C) 2011 Powered by Apptha
+ * @license      :  http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ * @Creation Date:  October 22 2011
+ * 
+ * */
+?>
+<div id="ajaxcustomblock" style="display:block;">
+<div style="margin-top: -44px; float: right; margin-right:-44px;"><a href="javascript:ajaxClose('custom-option')"><img src="<?php echo $this->getSkinUrl('ajaxcart/images/close.png');?>" alt="close"/></a></div>
+    <script type="text/javascript">
+        var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>);
+    </script>
+    <?php $_product = $this->getProduct() ?>
+    <form action="<?php echo $this->getAddToCartUrl($_product) ?>" method="post"
+          id="product_addtocart_form" <?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
+        <input type="hidden" value="<?php $_product->getId() ?>" name="product">
+        <?php echo $this->getChildHtml('product_js');?>
+        <div id="">
+            <div class="productoptions"  style="margin:0">
+                <div class="productname"><?php echo $_product->getName() ?></div>
+                <?php echo $this->getChildHtml('product_options');?>
+                <?php echo $this->getChildHtml('product_configurable_options');?>
+                <?php echo $this->getChildHtml('product_price');?>
+                <div style="margin:0px auto;">
+                      <!--  <a href="javascript:ajaxClose('custom-option');" >
+                        <?php echo $this->__('Continue Shopping')?>
+                    </a> -->
+                    <button type="button" title="<?php echo $this->__('Continue Shopping') ?>" style="margin-left: 12px;" class="button btn-cart" onclick="javascript:ajaxClose('custom-option');"><span><span style="text-shadow: #393939 1px 1px 1px;"><?php echo $this->__('Continue Shopping') ?></span></span></button>
+                   <!-- <a href="#" id="" class="" onclick="productAddToCartForm.submit('ajaxlist');" style="float:right;">
+                        <?php echo $this->__('Add to cart')?>
+                    </a>  -->
+                    <button type="button" title="<?php echo $this->__('Checkout') ?>" class="button btn-cart" onclick="productAddToCartForm.submit('ajaxlist');" style="padding-left:20px;"><span><span style="text-shadow: #393939 1px 1px 1px;"><?php echo $this->__('Checkout') ?></span></span></button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

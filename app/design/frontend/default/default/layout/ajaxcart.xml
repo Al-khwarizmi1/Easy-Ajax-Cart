@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+         <reference name="head">
+             <action method="addJs"><script>ajaxcart/ajaxcart.js</script></action>
+              <action method="addJs"><script>ajaxcart/lightbox.js</script></action> 
+              <action method="addCss"><stylesheet>ajaxcart/css/ajaxcart.css</stylesheet></action>
+        </reference>    
+        <reference name="content">
+           <block type="ajaxcart/ajaxcart" name="ajaxcart" template="ajaxcart/ajaxcart.phtml"  />    
+        </reference> 
+    </default>
+    <ajaxcart_index_index>
+        <reference name="content">
+            <block type="ajaxcart/ajaxcart" name="ajaxcart" template="ajaxcart/ajaxcart.phtml"  />
+           
+        </reference>
+       
+    </ajaxcart_index_index>
+</layout> 
